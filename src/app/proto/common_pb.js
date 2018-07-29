@@ -14,7 +14,7 @@ var global = Function('return this')();
 goog.exportSymbol('proto.proto.EnumLogin', null, global);
 goog.exportSymbol('proto.proto.EnumLogin.Error', null, global);
 goog.exportSymbol('proto.proto.LoginMode', null, global);
-goog.exportSymbol('proto.proto.MsgForwardC', null, global);
+goog.exportSymbol('proto.proto.MsgForward', null, global);
 goog.exportSymbol('proto.proto.MsgForwardS', null, global);
 goog.exportSymbol('proto.proto.MsgKick', null, global);
 goog.exportSymbol('proto.proto.MsgLogin', null, global);
@@ -1203,12 +1203,12 @@ proto.proto.MsgVerifySuccess.serializeBinaryToWriter = function(message, writer)
  * @extends {jspb.Message}
  * @constructor
  */
-proto.proto.MsgForwardC = function(opt_data) {
+proto.proto.MsgForward = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.proto.MsgForwardC, jspb.Message);
+goog.inherits(proto.proto.MsgForward, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.proto.MsgForwardC.displayName = 'proto.proto.MsgForwardC';
+  proto.proto.MsgForward.displayName = 'proto.proto.MsgForward';
 }
 
 
@@ -1223,8 +1223,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.proto.MsgForwardC.prototype.toObject = function(opt_includeInstance) {
-  return proto.proto.MsgForwardC.toObject(opt_includeInstance, this);
+proto.proto.MsgForward.prototype.toObject = function(opt_includeInstance) {
+  return proto.proto.MsgForward.toObject(opt_includeInstance, this);
 };
 
 
@@ -1233,11 +1233,11 @@ proto.proto.MsgForwardC.prototype.toObject = function(opt_includeInstance) {
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.proto.MsgForwardC} msg The msg instance to transform.
+ * @param {!proto.proto.MsgForward} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.proto.MsgForwardC.toObject = function(includeInstance, msg) {
+proto.proto.MsgForward.toObject = function(includeInstance, msg) {
   var f, obj = {
     uid: jspb.Message.getFieldWithDefault(msg, 1, 0),
     data: msg.getData_asB64(),
@@ -1255,23 +1255,23 @@ proto.proto.MsgForwardC.toObject = function(includeInstance, msg) {
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.proto.MsgForwardC}
+ * @return {!proto.proto.MsgForward}
  */
-proto.proto.MsgForwardC.deserializeBinary = function(bytes) {
+proto.proto.MsgForward.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.proto.MsgForwardC;
-  return proto.proto.MsgForwardC.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.proto.MsgForward;
+  return proto.proto.MsgForward.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.proto.MsgForwardC} msg The message object to deserialize into.
+ * @param {!proto.proto.MsgForward} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.proto.MsgForwardC}
+ * @return {!proto.proto.MsgForward}
  */
-proto.proto.MsgForwardC.deserializeBinaryFromReader = function(msg, reader) {
+proto.proto.MsgForward.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -1303,9 +1303,9 @@ proto.proto.MsgForwardC.deserializeBinaryFromReader = function(msg, reader) {
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.proto.MsgForwardC.prototype.serializeBinary = function() {
+proto.proto.MsgForward.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.proto.MsgForwardC.serializeBinaryToWriter(this, writer);
+  proto.proto.MsgForward.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -1313,11 +1313,11 @@ proto.proto.MsgForwardC.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.proto.MsgForwardC} message
+ * @param {!proto.proto.MsgForward} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.proto.MsgForwardC.serializeBinaryToWriter = function(message, writer) {
+proto.proto.MsgForward.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getUid();
   if (f !== 0) {
@@ -1347,13 +1347,13 @@ proto.proto.MsgForwardC.serializeBinaryToWriter = function(message, writer) {
  * optional uint64 UID = 1;
  * @return {number}
  */
-proto.proto.MsgForwardC.prototype.getUid = function() {
+proto.proto.MsgForward.prototype.getUid = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /** @param {number} value */
-proto.proto.MsgForwardC.prototype.setUid = function(value) {
+proto.proto.MsgForward.prototype.setUid = function(value) {
   jspb.Message.setField(this, 1, value);
 };
 
@@ -1362,7 +1362,7 @@ proto.proto.MsgForwardC.prototype.setUid = function(value) {
  * optional bytes Data = 2;
  * @return {!(string|Uint8Array)}
  */
-proto.proto.MsgForwardC.prototype.getData = function() {
+proto.proto.MsgForward.prototype.getData = function() {
   return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
@@ -1372,7 +1372,7 @@ proto.proto.MsgForwardC.prototype.getData = function() {
  * This is a type-conversion wrapper around `getData()`
  * @return {string}
  */
-proto.proto.MsgForwardC.prototype.getData_asB64 = function() {
+proto.proto.MsgForward.prototype.getData_asB64 = function() {
   return /** @type {string} */ (jspb.Message.bytesAsB64(
       this.getData()));
 };
@@ -1385,14 +1385,14 @@ proto.proto.MsgForwardC.prototype.getData_asB64 = function() {
  * This is a type-conversion wrapper around `getData()`
  * @return {!Uint8Array}
  */
-proto.proto.MsgForwardC.prototype.getData_asU8 = function() {
+proto.proto.MsgForward.prototype.getData_asU8 = function() {
   return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
       this.getData()));
 };
 
 
 /** @param {!(string|Uint8Array)} value */
-proto.proto.MsgForwardC.prototype.setData = function(value) {
+proto.proto.MsgForward.prototype.setData = function(value) {
   jspb.Message.setField(this, 2, value);
 };
 
@@ -1401,13 +1401,13 @@ proto.proto.MsgForwardC.prototype.setData = function(value) {
  * optional int32 Flag = 3;
  * @return {number}
  */
-proto.proto.MsgForwardC.prototype.getFlag = function() {
+proto.proto.MsgForward.prototype.getFlag = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
 /** @param {number} value */
-proto.proto.MsgForwardC.prototype.setFlag = function(value) {
+proto.proto.MsgForward.prototype.setFlag = function(value) {
   jspb.Message.setField(this, 3, value);
 };
 
@@ -1669,8 +1669,9 @@ proto.proto.MsgTypeCmd = {
   VERIFYS: 3,
   KICK: 4,
   VERIFYSUCCESS: 5,
-  FORWARDC: 6,
-  FORWARDS: 7
+  FORWARD: 6,
+  FORWARDS: 7,
+  COMMON_CMD_END: 99
 };
 
 /**
