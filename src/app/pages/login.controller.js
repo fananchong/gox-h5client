@@ -9,8 +9,8 @@
         $scope.enable = true;
         $scope.txtaccount = 'test1';
         $scope.txtpassword = '123456';
-        $scope.txtip = '127.0.0.1';
-        $scope.txtport = 8080;
+        $scope.txtip = '101.132.47.70';
+        $scope.txtport = 30100;
         $scope.click = function () {
             onClick($scope, $http);
         };

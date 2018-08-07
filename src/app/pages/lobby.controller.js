@@ -3,7 +3,7 @@
 
     module.exports = PageLobby;
 
-    function PageLobby() { }
+    function PageLobby() {}
 
     PageLobby.onController = function ($scope, $http, user) {
         $scope.txtaccount = user.account;
@@ -12,13 +12,14 @@
         $scope.click = function () {
             onClick();
         };
-        function onClick() {
-        }
+
+        function onClick() {}
     };
 
     PageLobby.onShow = function () {
         if (PageLobby.scope.enable) {
             PageLobby.scope.txtaccount = PageLobby.user.account;
+            PageLobby.user.lobby.Login();
         }
     };
 
