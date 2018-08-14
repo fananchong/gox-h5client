@@ -3,14 +3,14 @@
 
     module.exports = PageLogin;
 
-    function PageLogin() { }
+    function PageLogin() {}
 
     PageLogin.onController = function ($scope, $http, user) {
         $scope.enable = true;
         $scope.txtaccount = 'test1';
         $scope.txtpassword = '123456';
-        $scope.txtip = '101.132.47.70';
-        $scope.txtport = 30100;
+        $scope.txtip = '127.0.0.1'; //101.132.47.70
+        $scope.txtport = 8080; //30100
         $scope.click = function () {
             onClick($scope, $http);
         };

@@ -16,6 +16,7 @@
         this.token = "";
         this.gatewayIP = "";
         this.gatewayPort = 0;
+        this.playerName = "";
     }
 
     var proto1 = User.prototype;

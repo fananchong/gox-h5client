@@ -2,6 +2,7 @@
     'use strict';
 
     require('../proto/lobby_pb.js');
+    var PageLobby = require('../pages/lobby.controller.js');
 
     module.exports = Lobby;
 
@@ -25,7 +26,11 @@
         switch (cmd) {
             case proto.proto.MsgTypeCmd_Lobby.PLAYERBASEINFO:
                 var msg = proto.proto.MsgPlayerBaseInfoResult.deserializeBinary(data);
-                console.log(msg);
+                console.log("name:", msg.getName());
+                this.user.playerName = msg.getName();
+                PageLobby.scope.txtname = msg.getName();
+                PageLobby.scope.txttips = "请点击'开始游戏'按钮~！";
+                PageLobby.scope.$apply();
                 break;
         }
     };

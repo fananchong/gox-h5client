@@ -9,9 +9,10 @@
     function WS(name, onConnect) {
         this.name = name;
         this.onConnect = onConnect;
-        this.ws = null;                     // WebSocket对象
-        this.recvbuf = null;                // 粘包处理用
+        this.ws = null; // WebSocket对象
+        this.recvbuf = null; // 粘包处理用
         this.cmds = {};
+        this.defaultHandler = null;
     }
 
     var proto = WS.prototype;
@@ -25,7 +26,7 @@
         );
     };
 
-    proto.Send = function(cmd, msg){
+    proto.Send = function (cmd, msg) {
         var buf = Buffer.from(msg.serializeBinary());
         var data = Buffer.concat([new NetMsgHead(buf.length, cmd).encode(), buf]);
         this.ws.send(data);
@@ -69,6 +70,9 @@
         if (head.cmd in this.cmds) {
             this.cmds[head.cmd](buf);
         } else {
+            if (this.defaultHandler != null && this.defaultHandler(head.cmd, buf)) {
+                return;
+            }
             console.log('[' + this.name + '] recv message, cmd:', head.cmd, ', size:', head.size, ', flag:', head.flag);
         }
     };

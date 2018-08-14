@@ -5,7 +5,7 @@
     var NetMsgHead = require('../proto/netmsg_head.js');
     require('../proto/common_pb.js');
     var Page = require('../pages/page.js');
-    require('./const.js');
+    var Const = require('./const.js');
 
     module.exports = Gateway;
 
@@ -21,7 +21,7 @@
         if (self.ws == null) {
             this.ws = new WS('gateway', self.onConnect.bind(self));
             this.ws.cmds[proto.proto.MsgTypeCmd.VERIFYSUCCESS] = self.onVerifySuccess.bind(self);
-            this.ws.cmds[proto.proto.MsgTypeCmd.FORWARD] = self.onForward.bind(self);
+            this.ws.defaultHandler = self.onForward.bind(self);
         }
         this.ws.Connect(self.user.gatewayIP, self.user.gatewayPort);
     };
@@ -39,15 +39,16 @@
         Page.showPage('lobby');
     };
 
-    proto1.onForward = function (data) {
-        var head = new NetMsgHead(0, 0);
-        head.decode(curBuf);
-        t = int(head.cmd / MsgCmdOffset);
+    proto1.onForward = function (cmd, buff) {
+        var t = parseInt(cmd / Const.MsgCmdOffset);
         switch (t) {
-            case Lobby:
+            case Const.Lobby:
                 this.user.lobby.OnRecvMsg(cmd, buff.slice(NetMsgHead.len));
                 break;
+            default:
+                return false;
         }
+        return true;
     };
 
     proto1.ForwardMsg = function (cmd, msg) {

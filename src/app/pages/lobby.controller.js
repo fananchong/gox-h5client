@@ -19,7 +19,7 @@
     PageLobby.onShow = function () {
         if (PageLobby.scope.enable) {
             PageLobby.scope.txtaccount = PageLobby.user.account;
-            PageLobby.user.lobby.Login();
+            PageLobby.scope.txtname = PageLobby.user.playerName;
         }
     };
 
