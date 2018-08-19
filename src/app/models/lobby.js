@@ -13,7 +13,14 @@
     var proto1 = Lobby.prototype;
 
     proto1.Login = function () {
-        this.queryPlayerBaseInfo();
+        this.createPlayer();
+    };
+
+    proto1.createPlayer = function () {
+        var msg = new proto.proto.MsgCreatePlayer();
+        msg.setName(this.user.account + "_aa"); // role name
+        msg.setSex(1);
+        this.user.gateway.ForwardMsg(proto.proto.MsgTypeCmd_Lobby.CREATEPLAYER, msg);
     };
 
     proto1.queryPlayerBaseInfo = function () {
@@ -23,10 +30,19 @@
 
 
     proto1.OnRecvMsg = function (cmd, data) {
+        var msg = null;
         switch (cmd) {
+            case proto.proto.MsgTypeCmd_Lobby.CREATEPLAYER:
+                msg = proto.proto.MsgCreatePlayerResult.deserializeBinary(data);
+                if (msg.getErr() == 0 || msg.getErr() == proto.proto.EnumCreatePlayer.Error.ERREXIST) {
+                    this.queryPlayerBaseInfo();
+                }
+                console.log("create player. code:", msg.getErr());
+                break;
             case proto.proto.MsgTypeCmd_Lobby.PLAYERBASEINFO:
-                var msg = proto.proto.MsgPlayerBaseInfoResult.deserializeBinary(data);
-                console.log("name:", msg.getName());
+                msg = proto.proto.MsgPlayerBaseInfoResult.deserializeBinary(data);
+                console.log("query role. code:", msg.getErr());
+                console.log("query role. name:", msg.getName());
                 this.user.playerName = msg.getName();
                 PageLobby.scope.txtname = msg.getName();
                 PageLobby.scope.txttips = "请点击'开始游戏'按钮~！";
