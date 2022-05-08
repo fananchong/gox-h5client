@@ -13,6 +13,7 @@ module.exports = {
         "open": true,
         "browser": ["chrome", '--allow-file-access-from-files', '--disable-web-security', '--user-data-dir=./userdata'],
         "watch_js": ['./src/index.js', './src/app/**/*.js'],
-        "watch_html": ['./src/**/*.html']
+        "watch_html": ['./src/**/*.html'],
+        "w2t": true
     }
 };
