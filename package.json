@@ -6,16 +6,17 @@
     "license": "MIT",
     "repository": "github:fananchong/go-x",
     "devDependencies": {
-        "webdevjs": "^1.2.2",
+        "gulp": "^3.9.1",
+        "webdevjs": "^1.2.3",
         "webpack": "^5.72.0",
         "webpack-cli": "^4.9.2"
     },
     "dependencies": {
         "angular": "^1.6.9",
-        "blueimp-md5": "^2.10.0",
+        "blueimp-md5": "^2.19.0",
         "electron": "^18.2.0",
-        "google-protobuf": "^3.5.0",
-        "sprintf-js": "^1.1.1"
+        "google-protobuf": "^3.20.1",
+        "sprintf-js": "^1.1.2"
     },
     "scripts": {
         "app": "webpack --mode=development && cd src && electron .",
